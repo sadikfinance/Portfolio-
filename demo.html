@@ -188,4 +188,38 @@ if(c.sample==='shop'){
  renderProducts();renderCart();
 }
 
+</script>
+<script>
+(function(){
+ if(!document.body.classList.contains('atelier-shop')) return;
+ const style=document.createElement('style');
+ style.textContent=`
+ .at-product-image{isolation:isolate}.at-quick-view{position:absolute;left:10px;right:10px;bottom:10px;padding:12px 10px;border:0;background:#f5f2ecef;color:#201c19;font-size:10px;letter-spacing:.13em;text-transform:uppercase;opacity:0;transform:translateY(6px);transition:opacity .2s,transform .2s}
+ .at-product:hover .at-quick-view,.at-product:focus-within .at-quick-view{opacity:1;transform:none}
+ .at-catalog-tools{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:18px 0 24px;font-size:11px;color:var(--atelier-muted)}
+ .at-sort{border:1px solid var(--atelier-line);background:transparent;color:var(--atelier-ink);padding:10px 12px;font:inherit;letter-spacing:.04em;max-width:100%}
+ .at-quick-modal{position:fixed;inset:0;z-index:10001;background:#19161499;display:none;align-items:center;justify-content:center;padding:20px}.at-quick-modal.open{display:flex}
+ .at-quick-card{position:relative;background:var(--atelier-paper);width:min(760px,100%);max-height:90vh;overflow:auto;display:grid;grid-template-columns:1fr 1fr}
+ .at-quick-card img{width:100%;height:100%;min-height:360px;object-fit:cover;background:#e5ded4}.at-quick-copy{padding:clamp(22px,4vw,44px);display:flex;flex-direction:column;justify-content:center}
+ .at-quick-copy h2{font:400 clamp(26px,3vw,38px)/1.12 Georgia,serif;margin:10px 0}.at-quick-copy p{font-size:12px;line-height:1.8;color:var(--atelier-muted)}
+ .at-quick-close{position:absolute;right:12px;top:10px;z-index:2;border:0;background:#f5f2ec;color:#201c19;font-size:24px;width:38px;height:38px}
+ .at-top-button{position:fixed;right:20px;bottom:20px;z-index:9998;border:1px solid var(--atelier-line);background:var(--atelier-paper);color:var(--atelier-ink);width:42px;height:42px;border-radius:50%;opacity:0;pointer-events:none;transition:opacity .2s;box-shadow:0 4px 20px #201c1918}.at-top-button.visible{opacity:1;pointer-events:auto}
+ @media(max-width:760px){.at-catalog-tools{align-items:flex-start;flex-direction:column}.at-products{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 10px}.at-quick-view{opacity:1;transform:none;left:6px;right:6px;bottom:6px;padding:10px 5px;font-size:9px}.at-quick-card{grid-template-columns:1fr;max-width:430px}.at-quick-card img{height:280px;min-height:0}.at-quick-copy{padding:22px}.at-wrap{width:calc(100% - 32px)}}
+ @media(prefers-reduced-motion:reduce){.at-quick-view,.at-top-button{transition:none!important}}
+ `;
+ document.head.appendChild(style);
+ const modal=document.createElement('div');modal.className='at-quick-modal';modal.id='at-quick-modal';modal.setAttribute('role','dialog');modal.setAttribute('aria-modal','true');modal.setAttribute('aria-label','Product quick view');
+ modal.innerHTML='<div class="at-quick-card"><button class="at-quick-close" aria-label="Close quick view">×</button><img id="at-quick-image" alt=""><div class="at-quick-copy"><div class="at-kicker">ATELIER 09 / PRODUCT DETAILS</div><h2 id="at-quick-name"></h2><strong id="at-quick-price"></strong><p>Designed for everyday wear, selected for its considered details and easy versatility. Product imagery and availability are illustrative in this demo.</p><button class="at-add" id="at-quick-add">Add to bag</button></div></div>';
+ document.body.appendChild(modal);
+ const top=document.createElement('button');top.className='at-top-button';top.type='button';top.setAttribute('aria-label','Back to top');top.textContent='↑';document.body.appendChild(top);
+ function decorate(){document.querySelectorAll('.at-product').forEach(card=>{if(card.querySelector('.at-quick-view'))return;const add=card.querySelector('[data-add]');if(!add)return;const b=document.createElement('button');b.className='at-quick-view';b.type='button';b.dataset.quick=add.dataset.add;b.textContent='Quick view';card.querySelector('.at-product-image').appendChild(b)});const grid=document.getElementById('at-all-products');if(grid&&!document.getElementById('at-catalog-tools')){const tools=document.createElement('div');tools.className='at-catalog-tools';tools.id='at-catalog-tools';tools.innerHTML='<span id="at-result-count" aria-live="polite">Explore the collection</span><label>Sort by <select class="at-sort" id="at-sort"><option value="featured">Featured</option><option value="price-low">Price: low to high</option><option value="price-high">Price: high to low</option><option value="name">Name: A to Z</option></select></label>';grid.parentNode.insertBefore(tools,grid)}updateCount()}
+ function updateCount(){const grid=document.getElementById('at-all-products'),count=document.getElementById('at-result-count');if(grid&&count)count.textContent=grid.querySelectorAll('.at-product').length+' pieces in the collection'}
+ function sortGrid(){const grid=document.getElementById('at-all-products'),sel=document.getElementById('at-sort');if(!grid||!sel)return;const cards=Array.from(grid.querySelectorAll('.at-product'));cards.sort((a,b)=>{const pa=Number(a.querySelector('[data-add]')?.dataset.add)||0,pb=Number(b.querySelector('[data-add]')?.dataset.add)||0,na=a.querySelector('h3')?.textContent||'',nb=b.querySelector('h3')?.textContent||'',xa=Number((a.querySelector('.at-product-meta span:last-child')?.textContent||'').replace(/[^0-9.]/g,''))||0,xb=Number((b.querySelector('.at-product-meta span:last-child')?.textContent||'').replace(/[^0-9.]/g,''))||0;if(sel.value==='price-low')return xa-xb;if(sel.value==='price-high')return xb-xa;if(sel.value==='name')return na.localeCompare(nb);return pa-pb});cards.forEach(card=>grid.appendChild(card));updateCount()}
+ function openQuick(id){const card=document.querySelector('[data-add="'+id+'"]')?.closest('.at-product');if(!card)return;const img=card.querySelector('.at-product-image img'),name=card.querySelector('h3')?.textContent||'Product',price=card.querySelector('.at-product-meta span:last-child')?.textContent||'';document.getElementById('at-quick-image').src=img?.src||'';document.getElementById('at-quick-image').alt=name;document.getElementById('at-quick-name').textContent=name;document.getElementById('at-quick-price').textContent=price;document.getElementById('at-quick-add').dataset.add=id;modal.classList.add('open');document.body.style.overflow='hidden';modal.querySelector('.at-quick-close').focus()}
+ function closeQuick(){modal.classList.remove('open');if(!document.querySelector('.at-cart-layer.open,.at-search-layer.open'))document.body.style.overflow=''}
+ document.addEventListener('click',e=>{const q=e.target.closest('[data-quick]');if(q){openQuick(q.dataset.quick);return}if(e.target.closest('.at-quick-close')||e.target===modal){closeQuick();return}if(e.target.closest('#at-quick-add')){const id=e.target.closest('#at-quick-add').dataset.add;document.querySelector('[data-add="'+id+'"]')?.click();closeQuick();return}if(e.target.closest('.at-top-button'))window.scrollTo({top:0,behavior:'smooth'})});
+ document.addEventListener('change',e=>{if(e.target.id==='at-sort')sortGrid()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeQuick()});window.addEventListener('scroll',()=>top.classList.toggle('visible',window.scrollY>500),{passive:true});
+ const grid=document.getElementById('at-all-products');const observer=new MutationObserver(()=>{decorate();const s=document.getElementById('at-sort');if(s&&s.value!=='featured')sortGrid()});if(grid)observer.observe(grid,{childList:true});
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',decorate);else decorate();
+})();
 </script></body></html>
