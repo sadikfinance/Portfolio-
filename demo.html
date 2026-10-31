@@ -446,4 +446,85 @@ if(c.sample==='shop'){
  document.querySelectorAll('.zh-links a').forEach(a=>a.addEventListener('click',()=>{if(innerWidth<=640)document.querySelector('.zh-links').style.display='none'}));
 })();
 </script>
+
+<script>
+(function(){
+ if(new URLSearchParams(location.search).get('type')!=='restaurant')return;
+ const css=document.createElement('style');css.textContent=`
+ .zh-app{background:#f7f4ed!important;color:#29251d!important}
+ .zh-top{background:#201b15;color:#e9d7ad;letter-spacing:.13em;font-size:10px}
+ .zh-nav{background:#fffdf8;border-bottom:1px solid #e5dccb;box-shadow:0 3px 16px #281b0d08}
+ .zh-mark{background:linear-gradient(145deg,#c6a45a,#8c682a);color:#21190e;border:1px solid #e2c983;border-radius:50%;width:42px;height:42px;font:700 24px Georgia;box-shadow:inset 0 0 0 3px #c6a45a,inset 0 0 0 4px #f0d99e}
+ .zh-logo{font-family:Georgia,serif;font-size:19px;letter-spacing:.035em;color:#2c2418}
+ .zh-logo small{font-family:'DM Sans',Arial,sans-serif;letter-spacing:.2em;color:#9b7a3b}
+ .zh-cta{background:#282017;color:#f4dfaa;border-radius:8px;box-shadow:0 3px 0 #c1a15a;font-weight:700}
+ .zh-cta:hover{background:#443322}
+ .zh-cart{border-radius:8px;border-color:#d9c8a6;background:#fffdf8}
+ .zh-hero{padding:44px 0 48px}
+ .zh-hero h1{font:600 clamp(39px,4.6vw,66px)/1.04 Georgia,'Times New Roman',serif;letter-spacing:-.035em;color:#292117}
+ .zh-hero h1 em{color:#a77b2e;font-style:normal}
+ .zh-eyebrow{background:#efe5d1;color:#765a28;border:1px solid #e5d3ad}
+ .zh-lead{color:#71695d;max-width:480px}
+ .zh-heroimage{border-radius:15px;border:4px solid #fffdf7;box-shadow:0 15px 45px #2a1e0c1a;height:455px}
+ .zh-imgbadge{border:1px solid #e6d6b7;background:#fffdf4f5}
+ .zh-imgbadge b{font-family:Georgia,serif}
+ .zh-stamp{background:#c7a45a;color:#2a2114;border:1px solid #f1dba1}
+ .zh-strip{background:#2a2319;color:#e7d7b7;border-radius:9px;text-transform:uppercase;letter-spacing:.09em;font-size:10px}
+ .zh-strip i{background:#c6a45a}
+ .zh-section h2,.zh-featurecopy h2,.zh-storycopy h2,.zh-reserve h2{font-family:Georgia,'Times New Roman',serif!important;font-weight:500!important;letter-spacing:-.025em!important}
+ .zh-kicker{color:#9b742d}
+ .zh-tabs{background:#f7f4ed}
+ .zh-tab{border-radius:7px;border-color:#dfd4c1;background:#fffdf8;color:#5f5443}
+ .zh-tab.active{background:#292117;border-color:#292117;color:#f2dfb2}
+ .zh-menu{grid-template-columns:repeat(3,minmax(0,1fr));gap:19px}
+ .zh-dish{background:#fffdf8;border:1px solid #e8dfcf;border-radius:12px;box-shadow:0 4px 15px #2a1e0b08}
+ .zh-dish:hover{box-shadow:0 12px 28px #2a1e0b12;transform:translateY(-3px)}
+ .zh-dishpic{height:205px;background:linear-gradient(135deg,#e9dfc9,#f6eee0);overflow:hidden}
+ .zh-dishpic img{transition:transform .4s}.zh-dish:hover .zh-dishpic img{transform:scale(1.035)}
+ .zh-tag{background:#fffaf0;color:#7b5b24;border:1px solid #e6d5b1}
+ .zh-dish h3{font:600 19px/1.3 Georgia,'Times New Roman',serif;color:#30271b}
+ .zh-price{color:#8b6424}
+ .zh-dish p{color:#7b7367;min-height:48px}
+ .zh-add{border:1px solid #b99a5b;background:#fffaf0;color:#6d4c19;border-radius:7px;font-weight:700}
+ .zh-add:hover{background:#2a2319;color:#f4dfaa;border-color:#2a2319}
+ .zh-veg{color:#287747}.zh-veg.nonveg{color:#b43d32}
+ .zh-feature{background:#262017;border:1px solid #b99852;border-radius:16px}
+ .zh-featurecopy .zh-kicker{color:#d6b56c}.zh-featurecopy p{color:#d4cabb}
+ .zh-featurecopy .zh-cta{background:#c6a45a;color:#2a2114;box-shadow:none}
+ .zh-reserve{background:#eee5d5;border:1px solid #dfcfb1;border-radius:15px}
+ .zh-field input,.zh-field select{background:#fffdf8;border-color:#d9cbb2;border-radius:7px}
+ .zh-foot{background:#211b14;border-top:3px solid #b8954e}
+ .zh-wa{background:#2a2319;color:#f2dba7;border:1px solid #b8954e;border-radius:9px}
+ .zh-cartbox{background:#fffdf8}.zh-carthead{border-color:#e5dccb}.zh-carthead h3{font-family:Georgia,serif}
+ .zh-toast{background:#292117;border:1px solid #c6a45a}
+ .zh-noimage{height:100%;width:100%;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at center,#f6e8ca,#e4d3b2);color:#987a40;font:italic 17px Georgia;letter-spacing:.03em}
+ .zh-orderdetails{display:grid;gap:12px;margin-top:16px}
+ .zh-orderdetails label{display:grid;gap:6px;font-size:11px;font-weight:700;color:#6e6049}
+ .zh-orderdetails input,.zh-orderdetails select{width:100%;border:1px solid #ded1ba;border-radius:7px;padding:12px;background:#fffaf0;color:#292117}
+ .zh-quantity{display:flex;align-items:center;gap:8px}
+ .zh-quantity button{border:1px solid #d9c8a6;border-radius:6px;background:#fffaf0;padding:4px 9px;color:#4c391c}
+ @media(max-width:1050px){.zh-menu{grid-template-columns:repeat(2,minmax(0,1fr))}}
+ @media(max-width:640px){.zh-hero{padding:26px 0 32px}.zh-heroimage{height:300px}.zh-menu{grid-template-columns:repeat(2,minmax(0,1fr))}.zh-dishpic{height:145px}.zh-dish h3{font-size:16px}.zh-dish p{min-height:65px}.zh-nav{position:sticky;top:0}.zh-tabs{top:70px}}
+ @media(max-width:380px){.zh-menu{grid-template-columns:1fr}.zh-dishpic{height:210px}.zh-dish p{min-height:0}}
+ `;document.head.appendChild(css);
+ // Prevent broken-image icons from appearing in the finished storefront.
+ function repairImage(img){if(img.dataset.zhChecked)return;img.dataset.zhChecked='1';img.addEventListener('error',function(){if(this.dataset.zhFailed)return;this.dataset.zhFailed='1';const box=this.closest('.zh-dishpic,.zh-heroimage,.zh-featureimg,.zh-storyimg');if(box){this.style.display='none';if(!box.querySelector('.zh-noimage')){const ph=document.createElement('div');ph.className='zh-noimage';ph.textContent='Zaffran House · Freshly prepared';box.appendChild(ph)}}});}
+ document.querySelectorAll('.zh-app img').forEach(repairImage);
+ new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(n=>{if(n.nodeType===1){if(n.matches?.('img'))repairImage(n);n.querySelectorAll?.('img').forEach(repairImage)}}))).observe(document.body,{childList:true,subtree:true});
+ // Cart quantities and checkout details improve the demo ordering flow.
+ const cartPanel=document.getElementById('zh-cartpanel'),box=document.querySelector('.zh-cartbox'),orderBtn=document.getElementById('zh-order');
+ if(box&&orderBtn){
+  const details=document.createElement('div');details.className='zh-orderdetails';details.innerHTML='<label>ORDER TYPE<select id="zh-order-type"><option>Delivery</option><option>Pickup</option></select></label><label>YOUR NAME<input id="zh-order-name" placeholder="Name for the order" autocomplete="name"></label><label>PHONE NUMBER<input id="zh-order-phone" placeholder="10-digit mobile number" inputmode="tel" autocomplete="tel"></label><label>DELIVERY ADDRESS<input id="zh-order-address" placeholder="House, street, area (delivery only)" autocomplete="street-address"></label>';
+  orderBtn.before(details);orderBtn.textContent='Send order request via WhatsApp ↗';
+  document.getElementById('zh-order-type').addEventListener('change',e=>{document.getElementById('zh-order-address').parentElement.style.display=e.target.value==='Pickup'?'none':'grid'});
+  const oldRender=window.renderCart;
+  // Add quantity controls to the rendered cart without altering the catalogue.
+  const itemHost=document.getElementById('zh-cartitems');
+  const refreshControls=()=>itemHost.querySelectorAll('.zh-cartitem').forEach((row,i)=>{if(row.querySelector('.zh-quantity'))return;const name=row.querySelector('span')?.textContent.split(' × ')[0];if(!name)return;const qtyText=row.querySelector('span')?.textContent;const qty=parseInt(qtyText.split(' × ')[1]||'1',10);const ctrl=document.createElement('div');ctrl.className='zh-quantity';ctrl.innerHTML='<button type="button" data-qminus aria-label="Decrease quantity">−</button><span>'+qty+'</span><button type="button" data-qplus aria-label="Increase quantity">+</button>';row.appendChild(ctrl)});
+  new MutationObserver(refreshControls).observe(itemHost,{childList:true,subtree:true});
+  itemHost.addEventListener('click',e=>{const b=e.target.closest('[data-qminus],[data-qplus]');if(!b)return;const row=b.closest('.zh-cartitem');const name=row.querySelector('span')?.textContent.split(' × ')[0];const qtySpan=row.querySelector('.zh-quantity span');let qty=parseInt(qtySpan?.textContent||'1',10)+(b.hasAttribute('data-qplus')?1:-1);if(qty<1){row.remove();return}qtySpan.textContent=qty;row.querySelector('span').textContent=name+' × '+qty;});
+  orderBtn.addEventListener('click',e=>{e.preventDefault();const name=document.getElementById('zh-order-name').value.trim(),phone=document.getElementById('zh-order-phone').value.trim(),type=document.getElementById('zh-order-type').value,address=document.getElementById('zh-order-address').value.trim();if(!name||!phone||!/^[0-9+()\s-]{8,16}$/.test(phone)||(type==='Delivery'&&!address)){e.stopImmediatePropagation();alert('Please enter your name, a valid phone number, and delivery address (for delivery orders).');return}const rows=[...itemHost.querySelectorAll('.zh-cartitem')];if(!rows.length){e.stopImmediatePropagation();return}const summary=rows.map(row=>row.querySelector('span').textContent+' — '+row.querySelector('b').textContent).join('\n');const total=document.getElementById('zh-total').textContent;const msg='Hello Zaffran House, I would like to place a '+type.toLowerCase()+' order.\nName: '+name+'\nPhone: '+phone+'\n'+(type==='Delivery'?'Address: '+address+'\n':'')+'Items:\n'+summary+'\nTotal: '+total;window.open('https://wa.me/919876543210?text='+encodeURIComponent(msg),'_blank','noopener');},{capture:true});
+ }
+})();
+</script>
 </body></html>
