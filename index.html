@@ -194,6 +194,40 @@ button,a{-webkit-tap-highlight-color:transparent}
 
  .sf-reveal{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s cubic-bezier(.2,.8,.2,1);transition-delay:var(--sf-delay,0ms)}.sf-reveal.sf-visible{opacity:1;transform:translateY(0)}@media(max-width:700px){.menu{display:block;font-size:27px;cursor:pointer}.links{display:none;position:absolute;left:0;right:0;top:calc(100% + 1px);padding:18px;background:#11130e;border:1px solid #303329;flex-direction:column;align-items:stretch;gap:18px}.links.sf-open{display:flex}.links .btn{width:100%}} 
 </style>
+
+<style>
+#contact{max-width:980px}
+.project-intro{margin-bottom:28px}
+.project-intro h2{font-size:clamp(2.1rem,4.5vw,3.6rem);line-height:1.05;letter-spacing:-.06em;margin:12px 0}
+.project-form{border:1px solid #ffffff1b;border-radius:22px;background:linear-gradient(145deg,#111b2b,#0b111d);padding:clamp(18px,4vw,38px);box-shadow:0 24px 70px #0003}
+.form-section-head{display:flex;gap:14px;align-items:flex-start;border-bottom:1px solid #ffffff14;padding:26px 0 17px;margin-bottom:18px}
+.form-section-head:first-child{padding-top:0}
+.form-section-head>span{display:grid;place-items:center;flex:0 0 38px;height:38px;border-radius:11px;background:#72f0c518;border:1px solid #72f0c54a;color:var(--mint);font-weight:900;font-size:.8rem}
+.form-section-head h3{margin:0;font-size:1.18rem;letter-spacing:-.025em}
+.form-section-head p{margin:4px 0 0;color:var(--muted);font-size:.88rem}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-bottom:12px}
+.project-form label{display:flex;flex-direction:column;gap:7px;color:#e6edf8;font-size:.87rem;font-weight:700;min-width:0}
+.project-form label>span{display:inline;color:var(--mint)}
+.project-form input:not([type=checkbox]),.project-form select,.project-form textarea{width:100%;min-height:46px;border:1px solid #344259;border-radius:10px;background:#080f1b;color:#f5f7fb;padding:11px 12px;font:inherit;font-weight:450;outline:none}
+.project-form textarea{resize:vertical;min-height:90px}
+.project-form input:focus,.project-form select:focus,.project-form textarea:focus{border-color:var(--mint);box-shadow:0 0 0 3px #72f0c51c}
+.project-form input::placeholder,.project-form textarea::placeholder{color:#78869c}
+.project-form select option{background:#101827;color:#f5f7fb}
+.project-form .full{grid-column:1/-1}
+.feature-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:0 0 24px;padding:17px;border:1px solid #ffffff19;border-radius:13px}
+.feature-options legend{padding:0 8px;color:#dbe4f3;font-size:.9rem;font-weight:800}
+.project-form .feature-options label{display:flex;flex-direction:row;align-items:flex-start;gap:9px;color:#bfcadd;font-size:.81rem;font-weight:550;line-height:1.4}
+.feature-options input{accent-color:#72f0c5;flex:0 0 auto;margin-top:3px;width:15px;height:15px}
+.form-privacy{font-size:.78rem;line-height:1.6;color:#8998ae;margin:20px 0}
+.form-submit{display:flex;gap:12px;flex-wrap:wrap}
+.form-submit .btn{font:inherit;font-weight:850}
+.form-status{font-size:.84rem;color:var(--mint);min-height:1.2em}
+.contact-direct{display:flex;flex-wrap:wrap;gap:8px;align-items:center;color:var(--muted);font-size:.88rem;margin-top:22px}
+.contact-direct a{color:var(--mint);font-weight:800}
+@media(max-width:720px){.feature-options{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:540px){.form-grid{grid-template-columns:1fr}.project-form .full{grid-column:auto}.feature-options{grid-template-columns:1fr}.form-submit{flex-direction:column}.form-submit .btn{width:100%}}
+</style>
+
 </head>
 <body>
 <header class="wrap nav"><a class="brand" href="#" aria-label="SiteForge Studio home"><span class="brand-symbol" aria-hidden="true"><svg viewBox="0 0 48 48" role="img"><path d="M24 3 29.5 17.5 45 10 37.5 25 45 38 29 32 24 46 18.5 32 3 39 10.5 24 3 11 19 17Z" fill="currentColor"/><circle cx="24" cy="24" r="5.2" fill="#080d19"/></svg></span><span class="brand-word">SITEFORGE<span>®</span><small>BRANDS MADE UNMISSABLE</small></span></a><nav class="links"><a href="#featured">Our work</a><a href="#examples">Explore styles</a><a href="#services">What we do</a><a href="#contact" class="btn navcta">Start a project <span>↗</span></a></nav><button class="menu" aria-label="Open navigation" aria-expanded="false">☰</button></header>
@@ -297,7 +331,69 @@ button,a{-webkit-tap-highlight-color:transparent}
 </div></div></section>
 <section id="services" class="wrap section"><div class="eyebrow">More than a pretty page</div><h2>Your goals first. The design follows.</h2><p class="sub">Choose the level of functionality that fits your project. Some features need a backend, database or third-party service, so we define the scope before building.</p><div class="feature-grid"><div class="feature"><b>01 · Design & responsive layout</b><p>Clear structure and layouts that adapt to mobile, tablet and desktop.</p></div><div class="feature"><b>02 · Contact & lead capture</b><p>Contact routes, enquiry forms and calls to action that fit your business.</p></div><div class="feature"><b>03 · Catalogues & content</b><p>Product lists, service pages, articles, galleries and searchable sections.</p></div><div class="feature"><b>04 · Booking & payments</b><p>Plan appointments, checkout or payments with suitable integrations.</p></div><div class="feature"><b>05 · Accounts & dashboards</b><p>Logins, saved data and admin tools where the project needs a backend.</p></div><div class="feature"><b>06 · Launch & improvement</b><p>Help prepare the site for launch and refine it from feedback.</p></div></div></section>
 <section id="pricing" class="wrap section"><div class="eyebrow">Flexible project options</div><h2>Choose the right starting point.</h2><p class="sub">Final pricing depends on pages, design complexity, integrations and maintenance. These are project scopes, not fixed quotes.</p><div class="grid" style="margin-top:25px"><article class="site-card"><div class="site-body"><span class="badge">01 · STARTER</span><h3 style="margin-top:13px">Launch website</h3><p>For a portfolio, landing page or small business presence.</p><ul class="sub" style="padding-left:18px;font-size:.88rem"><li>Core responsive pages</li><li>Contact and enquiry CTA</li><li>Basic SEO structure</li></ul><a class="text-link" href="#contact" data-plan="Launch website">Request a quote ↗</a></div></article><article class="site-card"><div class="site-body"><span class="badge">02 · BUSINESS</span><h3 style="margin-top:13px">Business website</h3><p>For businesses needing a richer content and lead-generation experience.</p><ul class="sub" style="padding-left:18px;font-size:.88rem"><li>Custom page sections</li><li>Service or product catalogue</li><li>Enquiry flow and analytics planning</li></ul><a class="text-link" href="#contact" data-plan="Business website">Request a quote ↗</a></div></article><article class="site-card"><div class="site-body"><span class="badge">03 · CUSTOM</span><h3 style="margin-top:13px">Advanced web solution</h3><p>For projects requiring workflows, accounts or external integrations.</p><ul class="sub" style="padding-left:18px;font-size:.88rem"><li>Feature and data planning</li><li>Backend / API integration scope</li><li>Admin and dashboard concepts</li></ul><a class="text-link" href="#contact" data-plan="Advanced web solution">Discuss requirements ↗</a></div></article></div></section>
-<section id="contact" class="wrap section"><div class="cta"><div><div class="eyebrow">Your brand deserves a better website</div><h2>Let’s build something<br>people remember.</h2><p>Tell us about your business, your goals and the kind of website you need. We’ll discuss the right direction for your brand.</p><p style="margin-top:16px;font-weight:800;color:var(--text)">Call / WhatsApp: <a href="tel:+918017865040" style="color:var(--mint)">8017865040</a></p></div><div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="https://wa.me/918017865040?text=Hi%20SiteForge%2C%20I%27m%20interested%20in%20a%20website%20for%20my%20business.">WhatsApp us ↗</a><a class="btn ghost" href="tel:+918017865040">Call now</a></div></div></section>
+<section id="contact" class="wrap section">
+  <div class="project-intro"><span class="eyebrow">START YOUR PROJECT · PROJECT BUILDER</span><h2>Tell us what you’re building.</h2><p class="sub">Configure your website idea below. Choose the type of website, features, systems, timeline and budget. We’ll receive your brief through WhatsApp or email—no phone calls.</p></div>
+  <form id="projectForm" class="project-form">
+    <div class="form-section-head"><span>01</span><div><h3>Your brand & business</h3><p>Help us understand who you are and what you do.</p></div></div>
+    <div class="form-grid">
+      <label>Brand / business name <span>*</span><input name="brand" required placeholder="e.g. Noor Clothing"></label>
+      <label>Your name <span>*</span><input name="name" required autocomplete="name" placeholder="Your full name"></label>
+      <label>Business industry <span>*</span><select name="industry" required><option value="">Choose an industry</option><option>Retail / ecommerce</option><option>Fashion / clothing</option><option>Restaurant / food</option><option>Healthcare / clinic / pharmacy</option><option>Real estate / property</option><option>Professional services / agency</option><option>Education / courses</option><option>Technology / SaaS</option><option>Manufacturing / wholesale / B2B</option><option>Automotive</option><option>Personal brand / portfolio</option><option>Non-profit / community</option><option>Other</option></select></label>
+      <label>Current website (if any)<input name="currentSite" type="url" placeholder="https://... (optional)"></label>
+      <label class="full">Briefly describe your business <span>*</span><textarea name="business" required rows="3" placeholder="What do you sell or provide? Who are your customers?"></textarea></label>
+    </div>
+    <div class="form-section-head"><span>02</span><div><h3>Website type & goals</h3><p>Pick the experience you want to create.</p></div></div>
+    <div class="form-grid">
+      <label>What type of website do you need? <span>*</span><select name="siteType" required><option value="">Select website type</option><option>Business / company website</option><option>Online store / ecommerce</option><option>Product catalogue / wholesale B2B</option><option>Restaurant / food ordering</option><option>Real estate listings</option><option>Clinic / doctor / pharmacy</option><option>Portfolio / personal brand</option><option>Landing page / campaign</option><option>Blog / magazine / news</option><option>Booking / appointment website</option><option>Web application / SaaS platform</option><option>Education / course platform</option><option>Directory / marketplace</option><option>Custom / not sure yet</option></select></label>
+      <label>Main goal <span>*</span><select name="goal" required><option value="">Choose primary goal</option><option>Get more enquiries and leads</option><option>Sell products online</option><option>Showcase services / portfolio</option><option>Build brand trust and credibility</option><option>Accept bookings / appointments</option><option>Manage customers or internal workflows</option><option>Publish content / educate audience</option><option>Build a community / membership</option><option>Other / multiple goals</option></select></label>
+      <label>Approximate number of pages <select name="pages"><option>Not sure — recommend a structure</option><option>1 page / landing page</option><option>2–5 pages</option><option>6–10 pages</option><option>11–20 pages</option><option>20+ pages</option></select></label>
+      <label>Preferred visual direction <select name="style"><option>Recommend a style for my brand</option><option>Luxury / premium</option><option>Minimal / clean</option><option>Bold / modern</option><option>Corporate / professional</option><option>Creative / expressive</option><option>Editorial / elegant</option><option>Playful / colourful</option><option>I have a reference website</option></select></label>
+    </div>
+    <div class="form-section-head"><span>03</span><div><h3>Features & systems</h3><p>Select everything you want included. We can help scope anything you’re unsure about.</p></div></div>
+    <fieldset class="feature-options"><legend>What should the website do?</legend>
+      <label><input type="checkbox" name="features" value="Contact / enquiry form"> Contact / enquiry form</label>
+      <label><input type="checkbox" name="features" value="WhatsApp contact"> WhatsApp contact</label>
+      <label><input type="checkbox" name="features" value="Product / service catalogue"> Product / service catalogue</label>
+      <label><input type="checkbox" name="features" value="Shopping cart and checkout"> Shopping cart and checkout</label>
+      <label><input type="checkbox" name="features" value="Online payments"> Online payments</label>
+      <label><input type="checkbox" name="features" value="Booking / appointment system"> Booking / appointment system</label>
+      <label><input type="checkbox" name="features" value="Customer login / user accounts"> Customer login / user accounts</label>
+      <label><input type="checkbox" name="features" value="Admin panel / dashboard"> Admin panel / dashboard</label>
+      <label><input type="checkbox" name="features" value="Database / saved records"> Database / saved records</label>
+      <label><input type="checkbox" name="features" value="Search, filters and sorting"> Search, filters and sorting</label>
+      <label><input type="checkbox" name="features" value="Inventory / order management"> Inventory / order management</label>
+      <label><input type="checkbox" name="features" value="Customer portal / order tracking"> Customer portal / order tracking</label>
+      <label><input type="checkbox" name="features" value="Blog / CMS to update content"> Blog / CMS to update content</label>
+      <label><input type="checkbox" name="features" value="Multilingual website"> Multilingual website</label>
+      <label><input type="checkbox" name="features" value="Email notifications / automation"> Email notifications / automation</label>
+      <label><input type="checkbox" name="features" value="Third-party API integrations"> Third-party API integrations</label>
+      <label><input type="checkbox" name="features" value="SEO and analytics setup"> SEO and analytics setup</label>
+      <label><input type="checkbox" name="features" value="Hosting / domain setup help"> Hosting / domain setup help</label>
+      <label><input type="checkbox" name="features" value="Not sure — need guidance"> Not sure — need guidance</label>
+    </fieldset>
+    <div class="form-grid">
+      <label>Do you already have a domain? <select name="domain"><option>Not yet / need advice</option><option>Yes, I own a domain</option><option>I have hosting too</option><option>Not sure what I need</option></select></label>
+      <label>Do you have logo, images and content? <select name="assets"><option>Some assets ready</option><option>Logo, images and text are ready</option><option>Need help with most content</option><option>Need logo / brand identity too</option></select></label>
+      <label class="full">Reference websites or design inspiration <input name="references" placeholder="Paste links or describe what you like (optional)"></label>
+    </div>
+    <div class="form-section-head"><span>04</span><div><h3>Budget & timeline</h3><p>Your budget helps us suggest a realistic scope. It is not a fixed quote.</p></div></div>
+    <div class="form-grid">
+      <label>Estimated budget (INR) <span>*</span><select name="budget" required><option value="">Choose your budget</option><option>Under ₹5,000</option><option>₹5,000–₹10,000</option><option>₹10,000–₹25,000</option><option>₹25,000–₹50,000</option><option>₹50,000–₹1,00,000</option><option>₹1,00,000+</option><option>Need advice before deciding</option></select></label>
+      <label>When do you want to launch? <select name="timeline"><option>Flexible / need advice</option><option>As soon as possible</option><option>Within 2 weeks</option><option>Within 1 month</option><option>Within 2–3 months</option><option>Later than 3 months</option></select></label>
+      <label class="full">Additional requirements <textarea name="extra" rows="3" placeholder="Any specific workflow, integrations, design details or must-have features? (optional)"></textarea></label>
+    </div>
+    <div class="form-section-head"><span>05</span><div><h3>How can we reach you?</h3><p>We’ll follow up by WhatsApp or email only. No calls.</p></div></div>
+    <div class="form-grid">
+      <label>Your email address <span>*</span><input type="email" name="email" required autocomplete="email" placeholder="you@company.com"></label>
+      <label>WhatsApp number <span>*</span><input type="tel" name="whatsapp" required autocomplete="tel" placeholder="Country code + number"></label>
+      <label class="full">Anything else we should know? <textarea name="notes" rows="2" placeholder="Optional notes"></textarea></label>
+    </div>
+    <p class="form-privacy">Your selections are formatted into a project brief when you choose WhatsApp or email. This static demo does not store form submissions on a server.</p>
+    <div class="form-submit"><button type="submit" class="btn">Send brief on WhatsApp ↗</button><button type="button" id="emailBrief" class="btn ghost">Send brief by email ↗</button></div>
+    <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
+  </form>
+  <div class="contact-direct"><span>Prefer to email directly?</span> <a href="mailto:contact.sadikfinance@gmail.com">contact.sadikfinance@gmail.com</a> <span>· WhatsApp only</span> <a href="https://wa.me/918017865040">8017865040</a></div>
+</section>
 </main>
 <footer class="wrap footer"><span>© <span id="year"></span> SiteForge® Studio</span><span>Premium websites for ambitious brands · <a href="https://wa.me/918017865040" style="color:var(--mint)">WhatsApp 8017865040</a></span></footer>
 <script>
@@ -326,7 +422,18 @@ const cards=[...document.querySelectorAll('.site-card')], filters=[...document.q
 const map={business:['business'],commerce:['commerce'],food:['food'],health:['health'],personal:['personal'],tech:['tech'],property:['property'],education:['education'],other:['other']};
 function render(){const q=search.value.trim().toLowerCase();let n=0;cards.forEach(c=>{const ok=(active==='all'||map[active]?.includes(c.dataset.category))&&(!q||(c.dataset.search+' '+c.innerText).toLowerCase().includes(q));c.style.display=ok?'':'none';if(ok)n++});count.textContent=n+' example'+(n===1?'':'s');let empty=document.querySelector('.empty');if(!n){if(!empty){empty=document.createElement('div');empty.className='empty';empty.textContent='No matching examples. Try another search or choose “All examples”.';document.getElementById('gallery').appendChild(empty)}}else if(empty)empty.remove()}
 filters.forEach(b=>b.addEventListener('click',()=>{filters.forEach(x=>x.classList.toggle('active',x===b));active=b.dataset.filter;render()}));search.addEventListener('input',render);
-document.querySelectorAll('[data-request], [data-plan]').forEach(a=>a.addEventListener('click',()=>{const what=a.dataset.request||a.dataset.plan;const contactButtons=document.querySelectorAll('#contact .btn');const whatsapp=contactButtons[0];if(whatsapp){whatsapp.href='https://wa.me/918017865040?text='+encodeURIComponent('Hi SiteForge, I am interested in: '+what+'. Please share the next steps.');}}));
+document.querySelectorAll('[data-request], [data-plan]').forEach(a=>a.addEventListener('click',()=>{const what=a.dataset.request||a.dataset.plan;const siteType=document.querySelector('[name="siteType"]');if(siteType){const match=[...siteType.options].find(o=>o.text.toLowerCase().includes(what.toLowerCase().replace(' website','')));if(match)siteType.value=match.value;}const notes=document.querySelector('[name="notes"]');if(notes&&!notes.value)notes.value='I am interested in: '+what; }));
+
+const projectForm=document.getElementById('projectForm');
+function buildProjectBrief(){
+ const fd=new FormData(projectForm), lines=['SITEFORGE — NEW WEBSITE PROJECT BRIEF',''];
+ const labels={brand:'Brand / business name',name:'Contact name',industry:'Industry',currentSite:'Current website',business:'Business description',siteType:'Website type',goal:'Primary goal',pages:'Number of pages',style:'Visual direction',features:'Requested features',domain:'Domain / hosting',assets:'Brand assets / content',references:'Reference websites',budget:'Estimated budget (INR)',timeline:'Desired launch',extra:'Additional requirements',email:'Email',whatsapp:'WhatsApp number',notes:'Other notes'};
+ Object.entries(labels).forEach(([key,label])=>{const values=fd.getAll(key).map(v=>String(v).trim()).filter(Boolean);if(values.length)lines.push(label+': '+values.join(', '));});
+ lines.push('','Sent via SiteForge website project builder.');return lines.join('\\n');
+}
+function validateProjectForm(){if(!projectForm.reportValidity())return false;return true;}
+projectForm.addEventListener('submit',e=>{e.preventDefault();if(!validateProjectForm())return;const message=buildProjectBrief();document.getElementById('formStatus').textContent='Your brief is ready. WhatsApp will open so you can review and send it.';window.open('https://wa.me/918017865040?text='+encodeURIComponent(message),'_blank','noopener');});
+document.getElementById('emailBrief').addEventListener('click',()=>{if(!validateProjectForm())return;const subject='Website project enquiry — '+(projectForm.elements.brand.value.trim()||'New project');const body=buildProjectBrief();document.getElementById('formStatus').textContent='Your email app will open with the project brief. Please review and send it.';window.location.href='mailto:contact.sadikfinance@gmail.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);});
 
 /* SiteForge interaction polish: reduced-motion-aware reveal and mobile menu */
 document.documentElement.classList.add('sf-js');
