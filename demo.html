@@ -801,4 +801,71 @@ if(c.sample==='shop'){
 })();
 </script>
 
+
+<script>
+/* ZAFFRAN HOUSE — reference-led finishing pass */
+(function(){
+ if(!new URLSearchParams(location.search).get('type') || new URLSearchParams(location.search).get('type')!=='restaurant') return;
+ const css=document.createElement('style');
+ css.id='zh-reference-finish';
+ css.textContent=`
+  body:has(.zh-nav){background:#08090b!important;color:#f7f4ef!important}
+  .zh-shell,.zh-main,.zh-page{background:#08090b!important}
+  .zh-nav{background:#0d0d10!important;border-bottom:1px solid #292326!important}
+  .zh-logo{color:#ff8a36!important}
+  .zh-hero{background:transparent!important}
+  .zh-hero h1{font-family:'DM Sans',Arial,sans-serif!important;font-weight:800!important;letter-spacing:-.055em!important;line-height:1.02!important}
+  .zh-hero h1 em,.zh-hero h1 span{color:#ff7a24!important}
+  .zh-heroimage{border:0!important;border-radius:0 0 38% 38%!important;overflow:visible!important;background:transparent!important}
+  .zh-heroimage img{border-radius:48% 48% 42% 42%!important;object-fit:cover!important;box-shadow:0 28px 80px #ff6b1814!important}
+  .zh-imgbadge{border-radius:18px!important;box-shadow:0 15px 40px #0008!important}
+  .zh-stamp{background:#ff6a16!important}
+  .zh-strip{border-radius:20px!important;background:#17171b!important;border:1px solid #343237!important}
+  .zh-promo{background:#f2eee9!important;color:#171311!important;border-radius:24px!important;transform:rotate(-.6deg);margin-top:44px!important;padding:30px 38px!important;box-shadow:0 18px 50px #0005!important}
+  .zh-promo h2{color:#171311!important}.zh-promo p{color:#514941!important}.zh-promo-kicker{color:#b94d17!important}
+  .zh-promo-mark{border-color:#d4b6a3!important;color:#c74d12!important}
+  .zh-promo-button{background:#ff6b18!important;border-radius:9px!important;color:white!important}
+  .zh-promo-orbit{color:#df5d1a1c!important;border-color:#d9c5b7!important}
+  .zh-section h2,.zh-featurecopy h2,.zh-storycopy h2,.zh-reserve h2,.zh-reviews h2,.zh-chef h2{font-family:'DM Sans',Arial,sans-serif!important;font-weight:750!important;letter-spacing:-.045em!important}
+  .zh-kicker{color:#ff8b42!important}
+  .zh-tabs{gap:10px!important}
+  .zh-tab{border-radius:999px!important;background:#151519!important;border-color:#343238!important}
+  .zh-tab.active{background:#ff6b18!important;border-color:#ff6b18!important}
+  .zh-menu-search{border-radius:14px!important;background:#151519!important;border-color:#343238!important}
+  .zh-dish{border-radius:22px!important;background:#151519!important;border-color:#343238!important;overflow:hidden!important}
+  .zh-dishpic{height:220px!important;background:#1b1b20!important}
+  .zh-dishpic img{transition:transform .4s!important}
+  .zh-dish:hover .zh-dishpic img{transform:scale(1.045)!important}
+  .zh-tag{border-radius:999px!important;background:#101014e8!important}
+  .zh-dish h3{font-family:'DM Sans',Arial,sans-serif!important;font-weight:750!important}
+  .zh-price{color:#ff8b42!important}
+  .zh-dishfoot{border-top-color:#343238!important}
+  .zh-add{border-radius:10px!important;border-color:#ff7428!important;color:#ff974f!important}
+  .zh-add:hover{background:#ff6b18!important}
+  .zh-feature{border-radius:30px!important;background:#151519!important;border-color:#343238!important}
+  .zh-featureimg img{min-height:100%;object-fit:cover!important}
+  .zh-storyimg{border-radius:28px!important;overflow:hidden!important}
+  .zh-chef-photo{border-radius:26px!important}
+  .zh-chef-caption{background:#ff6b18!important;border-radius:0 12px 0 0!important}
+  .zh-review-grid article{border-radius:22px!important;background:#151519!important;border-color:#343238!important}
+  .zh-review-grid p{font-family:'DM Sans',Arial,sans-serif!important;font-size:13px!important}
+  .zh-review-person>span{background:#392116!important;color:#ff9a55!important}
+  .zh-reserve{border-radius:28px!important;background:#151519!important;border-color:#343238!important}
+  .zh-field input,.zh-field select,.zh-orderdetails input,.zh-orderdetails select{border-radius:10px!important;background:#0d0d10!important}
+  .zh-foot{background:#0d0d10!important;border-radius:26px 26px 0 0!important;border-top:2px solid #ff6b18!important}
+  .zh-wa{background:#ff6b18!important;border-radius:10px!important}
+  .zh-cartbox{border-radius:24px!important}
+  @media(max-width:760px){
+   .zh-heroimage img{border-radius:32px!important}
+   .zh-promo{transform:none!important;border-radius:20px!important;padding:23px 20px!important}
+   .zh-dish{border-radius:17px!important}
+   .zh-dishpic{height:150px!important}
+   .zh-feature{border-radius:22px!important}
+   .zh-reserve{border-radius:22px!important}
+  }
+ `;
+ document.head.appendChild(css);
+})();
+</script>
+
 </body></html>
