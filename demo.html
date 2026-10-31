@@ -868,4 +868,183 @@ if(c.sample==='shop'){
 })();
 </script>
 
+
+<script>
+/* Mobile-first restaurant polish + interactive dish detail sheet */
+(function(){
+ const params=new URLSearchParams(location.search);
+ if(params.get('type')!=='restaurant')return;
+ const css=document.createElement('style');
+ css.id='zh-mobile-detail-style';
+ css.textContent=`
+  .zh-dish{cursor:pointer;min-width:0}
+  .zh-dish:focus-visible{outline:2px solid #ff8b42;outline-offset:3px}
+  .zh-dishpic{position:relative}
+  .zh-dishpic img{display:block;width:100%;height:100%;object-fit:cover}
+  .zh-detail-overlay{position:fixed;inset:0;z-index:120;background:rgba(0,0,0,.78);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:20px}
+  .zh-detail-overlay.open{display:flex}
+  .zh-detail-dialog{position:relative;width:min(820px,100%);max-height:min(90dvh,850px);overflow:auto;display:grid;grid-template-columns:1fr 1fr;background:#151519;border:1px solid #3b373b;border-radius:26px;box-shadow:0 30px 100px #000a;color:#f7f1e9}
+  .zh-detail-image{min-height:380px;background:#211d1a}
+  .zh-detail-image img{width:100%;height:100%;min-height:380px;object-fit:cover;display:block}
+  .zh-detail-copy{padding:clamp(24px,4vw,42px);display:flex;flex-direction:column;align-items:flex-start}
+  .zh-detail-close{position:absolute;right:14px;top:14px;width:40px;height:40px;border:1px solid #ffffff30;border-radius:50%;background:#09090bdc;color:white;font-size:24px;z-index:2}
+  .zh-detail-tag{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#ff9a59;background:#332218;border-radius:999px;padding:8px 11px}
+  .zh-detail-copy h2{font:750 clamp(28px,4vw,42px)/1.1 'DM Sans',Arial,sans-serif;letter-spacing:-.04em;margin:20px 0 10px;color:#fff5eb}
+  .zh-detail-price{font-size:23px;font-weight:800;color:#ff914a;margin:4px 0 18px}
+  .zh-detail-description{font-size:13px;line-height:1.9;color:#c3b9af;margin:0 0 20px}
+  .zh-detail-meta{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 26px}
+  .zh-detail-meta span{border:1px solid #39343a;border-radius:999px;padding:8px 10px;font-size:10px;color:#e5d9ce}
+  .zh-detail-add{margin-top:auto;border:0;border-radius:12px;padding:15px 20px;background:#ff6b18;color:white;font-weight:800;font-size:12px;width:100%}
+  .zh-detail-add:hover{background:#e95c10}
+  .zh-mobile{color:#fff2e7!important;border-color:#454047!important}
+  .zh-links.mobile-open{display:flex!important;position:absolute!important;top:calc(100% - 1px)!important;left:4%!important;right:4%!important;z-index:90!important;flex-direction:column!important;align-items:stretch!important;padding:16px!important;gap:0!important;border-radius:0 0 18px 18px!important;background:#151519!important;border:1px solid #343238!important;box-shadow:0 20px 40px #0008!important}
+  .zh-links.mobile-open a{padding:13px 8px!important;border-bottom:1px solid #343238!important}
+  .zh-links.mobile-open a:last-child{border-bottom:0!important}
+  @media(min-width:761px){.zh-menu{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
+  @media(max-width:760px){
+   .zh-shell{width:100%!important;padding-left:17px!important;padding-right:17px!important}
+   .zh-top{min-height:28px!important;padding:7px 12px!important;line-height:1.4!important}
+   .zh-nav{position:relative!important;padding:0 17px!important;height:68px!important}
+   .zh-navright{gap:8px!important}
+   .zh-navright #zh-cart-open{font-size:10px!important;padding:10px!important;white-space:nowrap!important}
+   .zh-mobile{min-width:40px!important;min-height:40px!important;font-size:18px!important}
+   .zh-hero{padding:28px 0 35px!important;gap:18px!important}
+   .zh-heroimage{height:300px!important;max-width:100%!important;margin:0 5px 10px!important}
+   .zh-hero h1{font-size:clamp(42px,11.5vw,58px)!important}
+   .zh-lead{font-size:13px!important;line-height:1.75!important}
+   .zh-hero .zh-cta{min-height:46px!important}
+   .zh-imgbadge{max-width:210px!important;padding:13px 15px!important}
+   .zh-imgbadge b{font-size:17px!important}
+   .zh-strip{grid-template-columns:1fr 1fr!important;padding:15px!important;gap:13px!important}
+   .zh-promo{display:grid!important;grid-template-columns:42px minmax(0,1fr)!important;gap:12px!important;margin:25px 0 0!important;padding:21px 17px!important}
+   .zh-promo-mark{width:42px!important;height:42px!important;flex-basis:42px!important}
+   .zh-promo h2{font-size:25px!important;line-height:1.1!important}
+   .zh-promo p{font-size:11px!important;line-height:1.65!important}
+   .zh-promo-button{grid-column:2!important;justify-self:start!important;margin:0!important;padding:13px 15px!important}
+   .zh-section{padding:50px 0!important}
+   .zh-sectionhead{margin-bottom:20px!important}
+   .zh-section h2,.zh-featurecopy h2,.zh-storycopy h2,.zh-reserve h2,.zh-reviews h2,.zh-chef h2{font-size:clamp(30px,8vw,40px)!important}
+   .zh-sub{font-size:12px!important;line-height:1.7!important}
+   .zh-tabs{margin:20px 0 15px!important;padding-bottom:5px!important}
+   .zh-tab{padding:10px 14px!important;font-size:10px!important}
+   .zh-menu-search{height:46px!important;border-radius:13px!important;margin:0 0 16px!important}
+   .zh-menu{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:11px!important}
+   .zh-dish{border-radius:17px!important}
+   .zh-dishpic{height:clamp(118px,34vw,165px)!important}
+   .zh-dishbody{padding:11px!important}
+   .zh-dishrow{display:block!important}
+   .zh-dish h3{font-size:14px!important;line-height:1.3!important;min-height:36px!important;margin-bottom:6px!important}
+   .zh-price{font-size:12px!important}
+   .zh-dish p{font-size:10px!important;line-height:1.55!important;min-height:61px!important;margin:9px 0 12px!important}
+   .zh-dishfoot{gap:5px!important;padding-top:10px!important;align-items:center!important}
+   .zh-veg{font-size:8px!important;letter-spacing:-.02em!important}
+   .zh-add{padding:8px 9px!important;font-size:10px!important;white-space:nowrap!important}
+   .zh-feature{border-radius:21px!important}
+   .zh-featureimg{height:245px!important;min-height:245px!important}
+   .zh-featurecopy{padding:24px 19px!important}
+   .zh-storyimg{height:280px!important}
+   .zh-chef{gap:18px!important}
+   .zh-chef-photo{height:290px!important}
+   .zh-reviews{padding:42px 0 20px!important}
+   .zh-review-grid{gap:11px!important}
+   .zh-review-grid article{padding:20px!important}
+   .zh-review-grid p{font-size:14px!important}
+   .zh-reserve{padding:23px 17px!important;gap:20px!important}
+   .zh-form{grid-template-columns:1fr 1fr!important;gap:10px!important}
+   .zh-field input,.zh-field select{min-width:0!important;padding:12px 10px!important}
+   .zh-foot{margin-top:38px!important}
+   .zh-footgrid{gap:20px 14px!important;padding-top:32px!important}
+   .zh-detail-overlay{align-items:flex-end;padding:0!important}
+   .zh-detail-dialog{width:100%!important;max-height:92dvh!important;grid-template-columns:1fr!important;border-radius:24px 24px 0 0!important;overflow:auto!important}
+   .zh-detail-image{height:230px!important;min-height:230px!important}
+   .zh-detail-image img{height:230px!important;min-height:230px!important}
+   .zh-detail-copy{padding:22px 20px 25px!important}
+   .zh-detail-copy h2{font-size:29px!important;margin:13px 0 8px!important}
+   .zh-detail-price{font-size:21px!important;margin-bottom:12px!important}
+   .zh-detail-description{font-size:12px!important;line-height:1.75!important;margin-bottom:14px!important}
+   .zh-detail-meta{margin-bottom:18px!important}
+   .zh-detail-add{min-height:48px!important}
+  }
+  @media(max-width:390px){
+   .zh-shell{padding-left:13px!important;padding-right:13px!important}
+   .zh-menu{gap:8px!important}
+   .zh-dishbody{padding:9px!important}
+   .zh-dish h3{font-size:13px!important}
+   .zh-dish p{font-size:9px!important;min-height:65px!important}
+   .zh-add{padding:8px 7px!important}
+   .zh-form{grid-template-columns:1fr!important}
+   .zh-detail-image{height:195px!important;min-height:195px!important}
+   .zh-detail-image img{height:195px!important;min-height:195px!important}
+  }
+ `;
+ document.head.appendChild(css);
+ const root=document.querySelector('.zh-app')||document;
+ const grid=root.querySelector('#zh-menugrid');
+ if(!grid)return;
+ const overlay=document.createElement('div');
+ overlay.className='zh-detail-overlay';
+ overlay.id='zh-detail-overlay';
+ overlay.innerHTML='<section class="zh-detail-dialog" role="dialog" aria-modal="true" aria-labelledby="zh-detail-title"><button type="button" class="zh-detail-close" aria-label="Close food details">×</button><div class="zh-detail-image"><img alt="" src=""></div><div class="zh-detail-copy"><span class="zh-detail-tag"></span><h2 id="zh-detail-title"></h2><div class="zh-detail-price"></div><p class="zh-detail-description"></p><div class="zh-detail-meta"></div><button type="button" class="zh-detail-add">Add to your order</button></div></section>';
+ document.body.appendChild(overlay);
+ let selectedDish=null;
+ function openDetails(card){
+  if(!card||card.dataset.adding==='true')return;
+  const name=card.querySelector('h3')?.textContent?.trim();
+  if(!name)return;
+  const image=card.querySelector('.zh-dishpic img');
+  const price=card.querySelector('.zh-price')?.textContent?.trim()||'';
+  const description=card.querySelector('.zh-dishbody p')?.textContent?.trim()||'Freshly prepared in our kitchen.';
+  const tag=card.querySelector('.zh-tag')?.textContent?.trim()||'Kitchen favourite';
+  const veg=card.querySelector('.zh-veg')?.textContent?.trim()||'CHEF PREPARED';
+  selectedDish=name;
+  overlay.querySelector('.zh-detail-image img').src=image?.src||'';
+  overlay.querySelector('.zh-detail-image img').alt=name;
+  overlay.querySelector('.zh-detail-tag').textContent=tag;
+  overlay.querySelector('#zh-detail-title').textContent=name;
+  overlay.querySelector('.zh-detail-price').textContent=price;
+  overlay.querySelector('.zh-detail-description').textContent=description;
+  overlay.querySelector('.zh-detail-meta').innerHTML='<span>'+veg+'</span><span>Made fresh to order</span><span>ZAFFRAN HOUSE</span>';
+  overlay.classList.add('open');
+  document.body.style.overflow='hidden';
+  overlay.querySelector('.zh-detail-close').focus();
+ }
+ function closeDetails(){overlay.classList.remove('open');document.body.style.overflow='';selectedDish=null}
+ grid.addEventListener('click',function(e){
+  if(e.target.closest('button[data-add]'))return;
+  const card=e.target.closest('.zh-dish');
+  if(card)openDetails(card);
+ });
+ grid.addEventListener('keydown',function(e){
+  const card=e.target.closest('.zh-dish');
+  if(card&&(e.key==='Enter'||e.key===' ')){e.preventDefault();openDetails(card)}
+ });
+ const observer=new MutationObserver(()=>grid.querySelectorAll('.zh-dish').forEach(card=>{card.tabIndex=0;card.setAttribute('role','button');card.setAttribute('aria-label','View details for '+(card.querySelector('h3')?.textContent||'menu item'))}));
+ observer.observe(grid,{childList:true});
+ grid.querySelectorAll('.zh-dish').forEach(card=>{card.tabIndex=0;card.setAttribute('role','button')});
+ overlay.querySelector('.zh-detail-close').addEventListener('click',closeDetails);
+ overlay.addEventListener('click',e=>{if(e.target===overlay)closeDetails()});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&overlay.classList.contains('open'))closeDetails()});
+ overlay.querySelector('.zh-detail-add').addEventListener('click',()=>{
+  if(!selectedDish)return;
+  const card=[...grid.querySelectorAll('.zh-dish')].find(c=>c.querySelector('h3')?.textContent?.trim()===selectedDish);
+  const add=card?.querySelector('button[data-add]');
+  if(add)add.click();
+  closeDetails();
+  const cart=document.querySelector('#zh-cartpanel');
+  if(cart)cart.classList.add('open');
+ });
+ const menuButton=root.querySelector('.zh-mobile');
+ const links=root.querySelector('.zh-links');
+ if(menuButton&&links){
+  menuButton.setAttribute('aria-expanded','false');
+  menuButton.addEventListener('click',()=>{
+   const open=links.classList.toggle('mobile-open');
+   menuButton.setAttribute('aria-expanded',String(open));
+   menuButton.setAttribute('aria-label',open?'Close navigation menu':'Open navigation menu');
+  });
+  links.addEventListener('click',e=>{if(e.target.closest('a')){links.classList.remove('mobile-open');menuButton.setAttribute('aria-expanded','false')}});
+ }
+})();
+</script>
+
 </body></html>
