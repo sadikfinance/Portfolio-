@@ -74,7 +74,7 @@ body.theme-webapp{--brand:#11b7a0;--bg:#0c121a;--ink:#edf5f6;--muted:#9baeb5;--l
 const configs={
 business:{name:'Business website',category:'BUSINESS / CORPORATE',headline:'Make your business easy to trust.',intro:'A professional company website that explains your services, establishes credibility and helps customers take the next step.',visual:'Professional by design. Clear by nature.',features:[['Company profile','Introduce your business, story and team.'],['Services & expertise','Explain your services and who they help.'],['Testimonials & FAQs','Answer common questions and build confidence.']],tags:['Services','About us','Testimonials','Contact'],sample:'business'},
 ecommerce:{name:'Online store',category:'E-COMMERCE',headline:'Give your products a storefront.',intro:'A product-led shopping concept with categories, item cards and a simple cart interaction. Payments and order processing require a production integration.',visual:'Discover products you’ll love.',features:[['Product catalogue','Organise products into easy-to-browse collections.'],['Cart interaction','Add and remove sample items in this demo.'],['Checkout-ready design','A front-end flow that can later connect to a payment provider.']],tags:['Products','Categories','Cart','Checkout'],sample:'shop'},
-restaurant:{name:'Restaurant & café',category:'FOOD / HOSPITALITY',headline:'Make people hungry to visit.',intro:'A warm restaurant concept with a sample menu, dietary labels, opening information and a reservation request form.',visual:'Good food. Good company.',features:[['Digital menu','Present popular dishes and prices.'],['Opening & location','Help customers plan their visit.'],['Reservation request','Collect a sample booking request (not sent to a restaurant).']],tags:['Menu','Opening hours','Location','Reservations'],sample:'restaurant'},
+restaurant:{name:'Restaurant & café',category:'FOOD / HOSPITALITY',headline:'Make people hungry to visit.',intro:'A warm restaurant concept with a sample menu, dietary labels, opening information and a reservation request form.',visual:'Fresh from our kitchen',features:[['Digital menu','Present popular dishes and prices.'],['Opening & location','Help customers plan their visit.'],['Reservation request','Collect a sample booking request (not sent to a restaurant).']],tags:['Menu','Opening hours','Location','Reservations'],sample:'restaurant'},
 medical:{name:'Medical & pharmacy',category:'HEALTH / PHARMACY',headline:'Make essential information easy to find.',intro:'A clean medical or pharmacy website concept for store details, service information, product categories and enquiry routes.',visual:'Care starts with clear information.',features:[['Store information','Show hours, location and contact options.'],['Product categories','Organise non-prescription catalogue items.'],['Enquiry flow','Help visitors ask about availability.']],tags:['Store details','Categories','Contact','Enquiry'],sample:'medical'},
 portfolio:{name:'Portfolio / CV',category:'PERSONAL BRAND',headline:'Put your work in the spotlight.',intro:'A personal website concept for freelancers, job seekers, creators and professionals to present work and skills.',visual:'A clear story about what you do.',features:[['About & skills','Communicate strengths and experience.'],['Selected projects','Give work samples a clear presentation.'],['Contact & CV','Make it easy to discuss opportunities.']],tags:['About','Projects','Skills','Contact'],sample:'portfolio'},
 saas:{name:'SaaS / startup',category:'SOFTWARE / STARTUP',headline:'Explain the product. Show the value.',intro:'A software landing page concept with feature highlights, plan comparison and a clear product call to action.',visual:'Less busywork. More momentum.',features:[['Feature storytelling','Show how the product solves a problem.'],['Plans & pricing','Compare sample tiers.'],['Conversion flow','Guide visitors to sign up or request a demo.']],tags:['Features','Pricing','Product','Demo'],sample:'saas'},
@@ -343,10 +343,72 @@ if(c.sample==='shop'){
  @media(max-width:640px){.zh-top{font-size:9px}.zh-nav{height:70px}.zh-links{display:none}.zh-mobile{display:block;background:transparent;border:1px solid var(--zline);border-radius:10px;padding:9px 11px}.zh-navright .zh-cta{display:none}.zh-hero{grid-template-columns:1fr;padding:35px 0 42px;gap:28px}.zh-hero h1{font-size:54px}.zh-lead{font-size:14px}.zh-heroimage{height:370px;order:-1}.zh-proof{margin-top:25px}.zh-strip{justify-content:flex-start;gap:14px;font-size:9px}.zh-section{padding:58px 0}.zh-sectionhead{display:block}.zh-sub{margin-top:12px}.zh-menu{grid-template-columns:1fr;gap:14px}.zh-dishpic{height:235px}.zh-feature{grid-template-columns:1fr}.zh-featureimg{min-height:270px;height:270px}.zh-featurecopy{padding:30px 25px 35px}.zh-story{grid-template-columns:1fr;gap:25px}.zh-storyimg{height:320px}.zh-reserve{padding:25px 18px}.zh-form{grid-template-columns:1fr}.zh-field.full,.zh-form .zh-cta{grid-column:auto}.zh-footgrid{grid-template-columns:1fr 1fr;gap:20px}.zh-footbottom{gap:10px;flex-direction:column}.zh-wa{right:12px;bottom:12px;padding:13px 15px}.zh-cartbox{padding:20px}}
  @media(prefers-reduced-motion:reduce){.zh-app *{scroll-behavior:auto!important;transition:none!important}}`;
  document.head.appendChild(css);
+ const appStyle=document.createElement('style');appStyle.textContent=`
+ .zh-app{background:#f6f7f3!important;color:#1e2922!important;font-family:'DM Sans',Arial,sans-serif!important}
+ .zh-shell{max-width:1320px}
+ .zh-top{background:#183b2b;color:#fff;padding:9px 5%;font-size:11px;letter-spacing:.02em}
+ .zh-nav{height:76px;background:#fdfdfb;border-bottom:1px solid #e5e9e1;position:sticky;top:0;z-index:25;padding:0 5.2%;max-width:none}
+ .zh-logo{font-size:17px;letter-spacing:-.04em}.zh-mark{border-radius:10px;background:#21633f;color:#e5ffb0}
+ .zh-logo small{letter-spacing:.12em;font-size:8px}
+ .zh-links{gap:24px;font-weight:600;font-size:12px;color:#49574c}
+ .zh-links a:hover{color:#1c7845}
+ .zh-cart{border:1px solid #dbe3d8;border-radius:12px;background:#fff;padding:11px 15px;font-weight:700}
+ .zh-cta{background:#217343;color:#fff;border-radius:11px;padding:13px 18px;font-size:12px;box-shadow:0 3px 0 #164c2c00;transition:background .2s,transform .2s}
+ .zh-cta:hover{background:#185c35;transform:translateY(-1px)}
+ .zh-hero{padding:36px 0 40px;gap:4%;grid-template-columns:1fr 1fr}
+ .zh-hero h1{font:700 clamp(38px,4.2vw,60px)/1.07 'DM Sans',Arial,sans-serif;letter-spacing:-.055em;margin:17px 0}
+ .zh-hero h1 em{font-style:normal;color:#237444}
+ .zh-eyebrow{background:#e7f2e7;display:inline-flex;padding:8px 12px;border-radius:999px;font-size:10px;letter-spacing:.06em}
+ .zh-eyebrow:before{display:none}
+ .zh-lead{font-size:14px;line-height:1.75;color:#667269}
+ .zh-heroimage{height:420px;border-radius:20px;box-shadow:0 18px 45px #1b38200f}
+ .zh-imgbadge{border-radius:12px}.zh-imgbadge b{font:700 16px 'DM Sans',Arial,sans-serif}
+ .zh-stamp{width:72px;height:72px;font-size:9px}
+ .zh-proof{margin-top:25px}.zh-stars{color:#e59b28}
+ .zh-strip{border:0;background:#eaf1e7;border-radius:14px;padding:17px 22px;color:#425547;letter-spacing:.02em;font-weight:600;text-transform:none}
+ .zh-strip i{background:#31834e}
+ .zh-section{padding:65px 0}
+ .zh-sectionhead{margin-bottom:22px;align-items:center}
+ .zh-kicker{color:#287448;letter-spacing:.09em}
+ .zh-section h2{font:700 clamp(28px,3vw,40px)/1.15 'DM Sans',Arial,sans-serif;letter-spacing:-.04em}
+ .zh-sub{font-size:12px}
+ #menu{padding-top:58px}
+ .zh-tabs{position:sticky;top:76px;z-index:15;background:#f6f7f3;padding:13px 0;margin:15px 0 22px;overflow-x:auto;flex-wrap:nowrap}
+ .zh-tab{white-space:nowrap;border:1px solid #dce4da;background:#fff;border-radius:10px;font-weight:600;padding:10px 15px}
+ .zh-tab.active{background:#216b3f;border-color:#216b3f;color:#fff}
+ .zh-menu{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+ .zh-dish{border:1px solid #e6eae3;border-radius:16px;box-shadow:0 3px 12px #1c30200a}
+ .zh-dish:hover{transform:translateY(-3px);box-shadow:0 12px 24px #1c302012}
+ .zh-dishpic{height:172px}
+ .zh-dishbody{padding:15px}
+ .zh-dish h3{font:700 15px/1.35 'DM Sans',Arial,sans-serif;letter-spacing:-.02em}
+ .zh-price{color:#1f6c3c;font-size:14px}
+ .zh-dish p{font-size:11px;line-height:1.6;min-height:53px;margin:9px 0 13px}
+ .zh-tag{border-radius:7px;font-size:8px;padding:6px 8px}
+ .zh-dishfoot{border-top:1px solid #eef0ea;padding-top:12px}
+ .zh-veg{font-size:9px;font-weight:700;letter-spacing:.02em}
+ .zh-add{border:1px solid #c8ddc8;background:#f4faf1;color:#216b3f;border-radius:8px;font-weight:700;padding:8px 13px;min-width:66px}
+ .zh-add:hover{background:#216b3f;color:white;border-color:#216b3f}
+ .zh-feature{border-radius:20px;background:#1d3a2a}
+ .zh-featurecopy h2{font:700 clamp(30px,3vw,43px)/1.12 'DM Sans',Arial,sans-serif;letter-spacing:-.04em}
+ .zh-featurecopy p{font-size:12px}
+ .zh-storycopy h2,.zh-reserve h2{font:700 clamp(30px,3vw,42px)/1.13 'DM Sans',Arial,sans-serif;letter-spacing:-.04em}
+ .zh-storyimg{border-radius:18px}
+ .zh-reserve{background:#e9f0e5;border:1px solid #dce7d8;border-radius:20px}
+ .zh-field input,.zh-field select{border-radius:9px;background:#fff;border-color:#dce4d9}
+ .zh-foot{background:#173728;margin-top:55px}
+ .zh-foot h4{letter-spacing:.06em}
+ .zh-wa{background:#216b3f;color:white;border-radius:12px;box-shadow:0 8px 24px #17372835}
+ .zh-cartbox{font-family:'DM Sans',Arial,sans-serif}.zh-carthead h3{font:700 24px 'DM Sans',Arial,sans-serif}
+ @media(max-width:1050px){.zh-menu{grid-template-columns:repeat(3,minmax(0,1fr))}.zh-dishpic{height:180px}}
+ @media(max-width:760px){.zh-shell{padding:0 18px}.zh-nav{padding:0 18px}.zh-hero{grid-template-columns:1fr;padding:24px 0 30px;gap:22px}.zh-heroimage{height:300px;order:0}.zh-hero h1{font-size:42px}.zh-proof{margin-top:18px}.zh-strip{gap:13px;padding:15px;display:grid;grid-template-columns:1fr 1fr}.zh-menu{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.zh-dishpic{height:140px}.zh-dishbody{padding:11px}.zh-dish h3{font-size:13px}.zh-dish p{font-size:10px;min-height:64px}.zh-price{font-size:12px}.zh-add{padding:7px 9px;min-width:0}.zh-tabs{top:70px}.zh-section{padding:48px 0}.zh-sectionhead{display:block}.zh-sub{margin-top:9px}.zh-featurecopy{padding:27px 22px}.zh-featureimg{height:230px;min-height:230px}.zh-storyimg{height:270px}.zh-reserve{padding:22px 16px}.zh-foot{margin-top:40px}}
+ @media(max-width:390px){.zh-menu{grid-template-columns:1fr}.zh-dishpic{height:205px}.zh-dish p{min-height:0}.zh-navright{gap:6px}.zh-cart{padding:9px 10px}.zh-logo{font-size:14px}.zh-mark{width:32px;height:32px}}
+ `;document.head.appendChild(appStyle);
+
  document.body.innerHTML=`
  <div class="zh-top"><span class="zh-dot">✦</span> NORTH INDIAN COMFORT, WITH A MODERN SOUL <span class="zh-dot">✦</span> OPEN DAILY · 12 PM – 11 PM</div>
  <header class="zh-shell zh-nav"><a class="zh-logo" href="#home"><span class="zh-mark">Z</span><span>ZAFFRAN HOUSE<small>INDIAN KITCHEN · EST. 2014</small></span></a><nav class="zh-links"><a href="#menu">Menu</a><a href="#story">Our story</a><a href="#signature">Signature</a><a href="#visit">Visit us</a></nav><div class="zh-navright"><button class="zh-cart" id="zh-cart-open">Bag <span id="zh-cartcount">(0)</span></button><a class="zh-cta" href="#reserve">Book a table ↗</a><button class="zh-mobile" id="zh-menu-toggle" aria-label="Open navigation">☰</button></div></header>
- <main id="home" class="zh-shell"><section class="zh-hero"><div><div class="zh-eyebrow">A little spice. A lot of soul.</div><h1>Indian food,<br>made for <em>the moment.</em></h1><p class="zh-lead">From slow-cooked biryani to smoky tandoor favourites, discover the dishes you love, made with care and served with a little extra something.</p><div class="zh-herobtns"><a class="zh-cta" href="#menu">Explore the menu <span>↘</span></a><a class="zh-outline" href="#reserve">Reserve your table</a></div><div class="zh-proof"><span class="zh-stars">★★★★★</span><span><b>4.8/5</b> · Loved by our neighbourhood</span></div></div><div class="zh-heroimage"><img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=1300&q=85" alt="Indian curry and freshly baked naan served at a restaurant"><div class="zh-stamp">MADE FRESH<br>EVERY DAY<br>✳</div><div class="zh-imgbadge"><b>Good food. Good company.</b><span>Every plate has a story.</span></div></div></section>
+ <main id="home" class="zh-shell"><section class="zh-hero"><div><div class="zh-eyebrow">A little spice. A lot of soul.</div><h1>Your favourite<br><em>Indian flavours,</em><br>delivered fresh.</h1><p class="zh-lead">Biryani, kebabs, tandoori classics and homestyle curries. Freshly prepared, full of flavour, and ready for your table.</p><div class="zh-herobtns"><a class="zh-cta" href="#menu">Order your favourites <span>↗</span></a><a class="zh-outline" href="#reserve">Reserve your table</a></div><div class="zh-proof"><span class="zh-stars">★★★★★</span><span><b>4.8/5</b> · Loved by our neighbourhood</span></div></div><div class="zh-heroimage"><img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=1300&q=85" alt="Indian curry and freshly baked naan served at a restaurant"><div class="zh-stamp">MADE FRESH<br>EVERY DAY<br>✳</div><div class="zh-imgbadge"><b>Good food. Good company.</b><span>Prepared fresh. Served hot.</span></div></div></section>
  <div class="zh-strip"><span><i></i> Dum-cooked biryani</span><span><i></i> Live tandoor</span><span><i></i> Veg & non-veg</span><span><i></i> Made fresh, always</span></div>
  <section class="zh-section" id="menu"><div class="zh-sectionhead"><div><div class="zh-kicker">Something for every craving</div><h2>The menu, worth<br>coming back for.</h2></div><p class="zh-sub">Old-school recipes, quality ingredients and a modern take on your favourites. Filter by what you're in the mood for.</p></div><div class="zh-tabs" id="zh-tabs"><button class="zh-tab active" data-cat="All">All favourites</button><button class="zh-tab" data-cat="Biryani">Biryani</button><button class="zh-tab" data-cat="Kebab & Tandoor">Kebab & Tandoor</button><button class="zh-tab" data-cat="Veg">Vegetarian</button><button class="zh-tab" data-cat="Curry & Bread">Curry & Bread</button></div><div class="zh-menu" id="zh-menugrid"></div></section>
  <section class="zh-section" id="signature"><div class="zh-feature"><div class="zh-featureimg"><img src="https://images.unsplash.com/photo-1633945274405-b6c8069047b0?auto=format&fit=crop&w=1100&q=85" alt="Aromatic Indian biryani with spices"></div><div class="zh-featurecopy"><div class="zh-kicker">The house signature</div><h2>Our dum biryani.<br>Your new ritual.</h2><p>Fragrant basmati, a patient dum, warming whole spices and fresh herbs. Served with cooling raita and a little pickled onion on the side.</p><p>Choose chicken, mutton or our vegetable dum — each pot layered and finished to order.</p><a href="#menu" class="zh-cta">Find your biryani ↗</a></div></div></section>
