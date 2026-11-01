@@ -53,6 +53,15 @@
 }
 @media(prefers-reduced-motion:reduce){.photo-cert-track,.cert-track{transition:none!important}}
 
+
+/* Global touch-feedback policy: prevent the default blue tap flash on mobile. */
+html,body,*,*::before,*::after{
+  -webkit-tap-highlight-color:transparent!important;
+}
+button,a,[role="button"],input,select,textarea,label,summary{
+  -webkit-tap-highlight-color:transparent!important;
+}
+
 </style>
 </head>
 <body>
