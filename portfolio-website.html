@@ -11,6 +11,48 @@
 @media(max-width:650px){.certificate{grid-template-columns:1fr;gap:12px}.cert-art{min-height:220px}.cert-copy{padding:8px 5px 10px}.cert-controls{flex-wrap:wrap}.cert-status{width:100%;order:3}}@media(max-width:480px){.wrap{width:min(100% - 28px,1120px)}.nav{height:66px}.logo{font-size:1.05rem}.nav .btn{padding:9px 11px;font-size:.8rem}.hero h1{font-size:3.5rem}.stats{gap:7px}.stat{padding:12px}.stat strong{font-size:1.55rem}.stat span{font-size:.7rem}.education{grid-template-columns:1fr}.contact{padding:24px}.meta{gap:12px}}
 .photo-cert-strip{margin-top:15px;padding:12px 2px 2px;border-top:1px solid #ffffff25}.photo-cert-heading,.photo-cert-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:.59rem;letter-spacing:.1em;font-weight:900;color:#b9c7bf}.photo-cert-live{display:flex;align-items:center;gap:5px;font-size:.52rem;letter-spacing:.06em}.photo-cert-live i{width:5px;height:5px;border-radius:50%;background:var(--green);display:inline-block}.photo-cert-window{overflow:hidden;margin-top:9px;border-radius:7px}.photo-cert-track{display:flex;transition:transform .45s ease;will-change:transform}.photo-cert-card{flex:0 0 100%;min-width:0;display:flex;align-items:center;gap:10px;text-align:left;padding:11px;background:#ffffff0b;border:1px solid #ffffff22;border-radius:7px;color:#fff;cursor:pointer}.photo-cert-card:hover,.photo-cert-card:focus-visible{background:#ffffff16;border-color:#b6f36b;outline:none}.photo-cert-badge{flex:0 0 38px;width:38px;height:38px;border-radius:6px;background:#dce9d0;color:#345526;display:grid;place-items:center;font-size:.67rem;font-weight:950}.photo-cert-card:nth-child(2) .photo-cert-badge{background:#e1e2f4;color:#4b4e82}.photo-cert-card:nth-child(3) .photo-cert-badge{background:#f1e0ce;color:#80502c}.photo-cert-card:nth-child(4) .photo-cert-badge{background:#d6eee6;color:#286c5b}.photo-cert-text{min-width:0;display:grid;gap:3px;flex:1}.photo-cert-text strong{font-size:.75rem;line-height:1.3}.photo-cert-text small{font-size:.63rem;color:#b9c7bf;line-height:1.35}.photo-cert-open{color:var(--green);font-size:1rem}.photo-cert-foot{margin-top:8px;font-size:.57rem;letter-spacing:.04em;font-weight:600}.profile{transform:none}.photo-cert-strip{background:#101a15;border-radius:8px;padding:12px;margin-top:13px}@media(max-width:800px){.photo-cert-strip{max-width:480px;margin:13px auto 0}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 @media(max-width:380px){.hero h1{font-size:3rem}.portrait{height:260px}.profile{padding:12px}.photo-cert-strip{padding:10px}.photo-cert-card{gap:8px;padding:9px}.photo-cert-badge{flex-basis:34px;width:34px;height:34px}.section-head h2{font-size:1.9rem}.cert-art{padding:18px;min-height:195px}.cert-controls-left{gap:6px}.cert-arrow{height:36px;width:36px}}
+
+/* Frameless credential treatment: photo and credentials remain visually separate. */
+.hero{align-items:start}
+.hero>div{min-width:0}
+.profile{align-self:start;margin-top:8px;max-width:100%;background:transparent!important;color:var(--ink)!important;padding:0!important;border-radius:0!important;box-shadow:none!important}
+.profile-bottom{color:var(--muted)!important;padding:10px 2px 0!important}
+.profile-bottom strong{color:#4e7d35!important}
+.portrait{border-radius:12px!important;overflow:hidden;background:#e8ece5}
+.portrait:after{display:none}
+.photo-cert-strip{background:transparent!important;border:0!important;border-radius:0!important;padding:14px 0 0!important;margin-top:4px!important;color:var(--ink)}
+.photo-cert-heading,.photo-cert-foot{color:var(--muted)!important}
+.photo-cert-live{color:#4e7d35}
+.photo-cert-card{background:transparent!important;color:var(--ink)!important;border:0!important;border-bottom:1px solid var(--line)!important;border-radius:0!important;padding:12px 2px!important}
+.photo-cert-card:hover,.photo-cert-card:focus-visible{background:#eaf0e5!important;border-color:#dce2dc!important}
+.photo-cert-text small{color:var(--muted)!important}
+.photo-cert-open{color:#4e7d35}
+.photo-cert-badge{border-radius:50%!important}
+.cert-carousel{border-radius:0!important;overflow:hidden}
+.certificate{background:transparent!important;border:0!important;border-radius:0!important;padding:0!important;gap:20px}
+.cert-art{border:0!important;outline:0!important;outline-offset:0!important;border-radius:8px!important;box-shadow:none!important}
+.cert-copy{padding:12px 0!important}
+.cert-controls{display:none!important}
+.cert-arrow{background:transparent!important;border-color:transparent!important}
+.cert-dot{background:#c5cec2}
+.cert-dot[aria-current=true]{background:#5d873e}
+@media(max-width:800px){
+ .hero{grid-template-columns:minmax(0,1fr)!important;gap:28px!important}
+ .hero>div,.hero>aside{width:100%;min-width:0}
+ .profile{max-width:none!important;width:100%!important;margin:0!important}
+ .portrait{height:auto!important;aspect-ratio:4/3;max-height:440px}
+ .portrait img{object-position:center 28%}
+ .photo-cert-strip{max-width:none!important;width:100%!important;margin:12px 0 0!important}
+ .meta{max-width:none}
+}
+@media(max-width:650px){
+ .certificate{grid-template-columns:minmax(0,1fr)!important;gap:8px!important}
+ .cert-art{min-height:210px!important}
+ .cert-copy{padding:8px 0!important}
+ .cert-controls{flex-wrap:wrap}
+}
+@media(prefers-reduced-motion:reduce){.photo-cert-track,.cert-track{transition:none!important}}
+
 </style>
 </head>
 <body>
@@ -65,12 +107,12 @@ function closeMobileNav(){const nav=document.getElementById('mainNav'),toggle=do
 (function(){
  const carousel=document.getElementById('certCarousel'),track=document.getElementById('certTrack'),dots=[...document.querySelectorAll('.cert-dot')],status=document.getElementById('certStatus'),slides=[...track.children];
  let index=0,timer=null,resumeTimer=null,touchStart=0;
- function render(){track.style.transform='translateX(-'+(index*100)+'%)';dots.forEach((d,i)=>d.setAttribute('aria-current',String(i===index)));status.textContent='Slide '+(index+1)+' of '+slides.length+' · Auto-advances every 4 seconds'}
+ function render(){track.style.transform='translateX(-'+(index*100)+'%)';dots.forEach((d,i)=>d.setAttribute('aria-current',String(i===index)));status.textContent='Certificate '+(index+1)+' of '+slides.length}
  function stop(){if(timer){clearInterval(timer);timer=null}}
- function start(){stop();timer=setInterval(()=>{index=(index+1)%slides.length;render()},4000)}
+ function start(){stop();timer=setInterval(()=>{index=(index+1)%slides.length;render()},4500)}
  function interact(next){stop();if(resumeTimer)clearTimeout(resumeTimer);index=(next+slides.length)%slides.length;render();resumeTimer=setTimeout(start,4000)}
- document.getElementById('certPrev').addEventListener('click',()=>interact(index-1));
- document.getElementById('certNext').addEventListener('click',()=>interact(index+1));
+ document.getElementById('certPrev')?.addEventListener('click',()=>interact(index-1));
+ document.getElementById('certNext')?.addEventListener('click',()=>interact(index+1));
  dots.forEach((d,i)=>d.addEventListener('click',()=>interact(i)));
  carousel.addEventListener('mouseenter',stop);carousel.addEventListener('mouseleave',start);
  carousel.addEventListener('focusin',stop);carousel.addEventListener('focusout',e=>{if(!carousel.contains(e.relatedTarget))start()});
