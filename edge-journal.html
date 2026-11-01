@@ -67,6 +67,70 @@ tbody tr:hover{background:#141e28}
 .toast{border:1px solid #465c3d;background:#172318;color:#eaffdc;border-radius:10px}
 a,button{-webkit-tap-highlight-color:transparent}
 @media(max-width:760px){.wrap{width:calc(100% - 28px)}.topbar{height:auto;min-height:68px;flex-wrap:wrap;padding:12px 0}.nav{order:3;width:100%;overflow-x:auto;flex-wrap:nowrap}.nav a{white-space:nowrap}.top-actions{margin-left:auto}.top-actions .pill{padding:9px;font-size:10px}.hero{padding:35px 0 24px;align-items:flex-start;flex-direction:column;gap:16px}.datebox{width:100%;min-width:0}.stat{padding:17px}.panel{padding:16px}.section{padding-top:38px}.section-title{align-items:flex-start;gap:12px;flex-wrap:wrap}.section-title h2{font-size:26px}}
+
+/* Edge Journal 2.0 — trading terminal layout */
+:root{--bg:#0b0d12;--panel:#11141b;--panel2:#171b24;--line:#282d39;--text:#f3f4f7;--muted:#8e95a5;--mint:#c8ff62;--red:#ff667b;--amber:#f5c86b;--radius:14px}
+html,body{background:#0b0d12!important;color:var(--text)!important;font-family:Inter,Manrope,system-ui,sans-serif!important}
+body{background-image:radial-gradient(ellipse at 70% -25%,#1d2820 0,transparent 40%)!important}
+.wrap{width:min(1420px,calc(100% - 48px))!important}
+.topbar{height:68px!important;position:sticky;top:0;z-index:50;background:rgba(11,13,18,.92)!important;backdrop-filter:blur(18px);border-bottom:1px solid #252a34!important;display:flex;gap:30px}
+.brand{font-size:18px!important;letter-spacing:-.06em}.mark{background:var(--mint)!important;color:#111!important;border-radius:8px!important;box-shadow:none!important}
+.nav{display:flex;gap:5px}.nav a{font-size:12px!important;color:#939bab!important;padding:10px 12px!important;border-radius:8px;text-decoration:none}.nav a:hover,.nav a.active{background:#20251b!important;color:var(--mint)!important}
+.top-actions{display:flex;gap:8px;margin-left:auto}
+.pill{border:1px solid #303644!important;background:#151922!important;color:#e4e7ed!important;border-radius:8px!important;padding:10px 13px!important;font-size:11px!important;box-shadow:none!important;transform:none!important}
+.pill.primary{background:var(--mint)!important;border-color:var(--mint)!important;color:#11150b!important;font-weight:800}
+.hero{padding:36px 0 22px!important;display:flex;justify-content:space-between;align-items:flex-end!important;gap:20px}
+.eyebrow{color:var(--mint)!important;font-size:9px!important;font-weight:800;letter-spacing:.15em!important}
+.hero h1{font-size:clamp(32px,4vw,48px)!important;line-height:1.08!important;letter-spacing:-.065em!important;margin:12px 0!important;max-width:780px}
+.hero h1 span{color:#f3f4f7!important}
+.hero p{font-size:13px!important;line-height:1.75!important;max-width:660px!important;color:#959cac!important}
+.datebox{background:#131720!important;border:1px solid #2a303c!important;border-radius:10px!important;min-width:170px!important;padding:15px!important}
+.datebox small{color:#777f90!important;letter-spacing:.12em!important}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:10px 0 18px!important}
+.tabs{display:flex;gap:3px;background:#11141b!important;border:1px solid #282d39!important;border-radius:9px!important;padding:4px!important}
+.tabs button{background:transparent!important;border:0!important;border-radius:6px!important;color:#9299a8!important;font-size:11px!important;padding:9px 12px!important}
+.tabs button.active{background:#272e20!important;color:var(--mint)!important}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px!important}
+.stat{background:#11141b!important;border:1px solid #292e39!important;border-radius:12px!important;padding:18px!important;box-shadow:none!important}
+.stat:after{display:none!important}.stat label{font-size:10px!important;color:#969dac!important}
+.stat strong{font-family:'DM Mono',monospace!important;font-size:clamp(24px,2.6vw,32px)!important;letter-spacing:-.06em!important;margin:15px 0 10px!important}
+.stat small{color:#71798a!important;font-size:9px!important;letter-spacing:.06em!important}
+.layout{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(280px,.8fr);gap:12px!important;margin-top:12px!important}
+.panel{background:#11141b!important;border:1px solid #292e39!important;border-radius:13px!important;padding:20px!important;box-shadow:none!important}
+.panel-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.panel-head h2{font-size:15px!important;font-weight:700!important;letter-spacing:-.035em!important;margin:0 0 5px!important}
+.sub{font-size:10px!important;line-height:1.7!important;color:#81899a!important}
+.tag{font:9px 'DM Mono',monospace!important;border:1px solid #343b47!important;background:#1a1e27!important;color:#b5bdca!important;border-radius:6px!important;padding:6px 8px!important}
+.chart{width:100%;height:210px!important;margin-top:20px!important}
+.legend{display:flex;justify-content:space-between;color:#7e8798!important;font-size:10px!important}
+.legend i{background:var(--mint)!important}
+.section{padding-top:42px!important}
+.section-title{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin-bottom:16px!important}
+.section-title h2{font-size:26px!important;letter-spacing:-.055em!important;margin:6px 0 0!important}
+.formgrid{gap:11px!important}
+.field label{font-size:9px!important;letter-spacing:.09em!important;color:#8992a3!important;text-transform:uppercase!important}
+.field input,.field select,.field textarea,input,select,textarea{background:#0b0e14!important;color:#f0f2f6!important;border:1px solid #303643!important;border-radius:8px!important;box-shadow:none!important}
+.field input,.field select,.field textarea{padding:12px!important;font-size:12px!important}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--mint)!important;box-shadow:0 0 0 2px #c8ff6215!important}
+.tablewrap{border:1px solid #292e39!important;border-radius:12px!important;background:#0e1117!important;overflow:auto}
+table{min-width:900px!important;border-collapse:collapse!important}
+thead{background:#171b24!important}th{font-size:9px!important;color:#828b9b!important;padding:14px!important;letter-spacing:.08em!important}
+td{font-size:11px!important;color:#e0e4eb!important;padding:14px!important;border-top:1px solid #242a34!important}
+tbody tr:hover{background:#171c25!important}
+.toolgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px!important}
+.toolcard h3{font-size:15px!important;letter-spacing:-.04em!important}
+.toolcard p{font-size:11px!important;line-height:1.75!important;color:#8c94a4!important}
+.calcresult{background:#1a2116!important;border:1px solid #3b492a!important;border-radius:10px!important;padding:15px!important;margin-top:14px!important}
+.calcresult strong{font-family:'DM Mono',monospace!important;color:var(--mint)!important;font-size:22px!important}
+.checklist .check{display:flex;align-items:center;gap:10px;padding:12px 0!important;border-bottom:1px solid #272c36!important;font-size:11px!important;color:#c6cbd5!important}
+.notice{background:#171a20!important;border:1px solid #303541!important;border-radius:8px!important;color:#9098a8!important;padding:12px!important;font-size:10px!important;line-height:1.7!important}
+.footer{display:flex;justify-content:space-between;gap:12px;padding:30px 0 24px!important;color:#71798a!important;font-size:9px!important;letter-spacing:.06em}
+.modal{background:#050609d9!important;backdrop-filter:blur(10px)!important}.modalbox,.modal-card{background:#11141b!important;border:1px solid #343b47!important;border-radius:16px!important}
+.toast{background:#20271b!important;border:1px solid #475638!important;color:#efffdf!important;border-radius:9px!important}
+.positive{color:var(--mint)!important}.negative{color:var(--red)!important}
+.empty{color:#747d8e!important;font-size:11px!important;padding:20px!important}
+@media(max-width:850px){.wrap{width:calc(100% - 28px)!important}.topbar{height:auto!important;min-height:62px;flex-wrap:wrap;gap:10px;padding:10px 0}.nav{order:3;width:100%;overflow:auto}.nav a{white-space:nowrap}.top-actions{margin-left:auto}.hero{align-items:flex-start!important;flex-direction:column;padding:28px 0 18px!important}.datebox{width:100%!important}.grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.layout{grid-template-columns:1fr!important}.toolgrid{grid-template-columns:1fr!important}.section-title{align-items:flex-start!important;flex-wrap:wrap}.footer{flex-direction:column}}
+@media(max-width:430px){.wrap{width:calc(100% - 20px)!important}.hero h1{font-size:32px!important}.stat{padding:14px!important}.stat strong{font-size:22px!important}.toolbar{align-items:flex-start;flex-direction:column}.toolbar-right{width:100%;display:flex;flex-wrap:wrap}.panel{padding:15px!important}.section-title h2{font-size:23px!important}}
 </style></head><body>
 <header class="wrap topbar"><a class="brand" href="index.html" style="text-decoration:none;color:inherit"><span class="mark">E</span><span>edge<em>journal</em></span></a><nav class="nav"><a href="#overview" class="active">Overview</a><a href="#journal">Journal</a><a href="#tools">Trading tools</a><a href="#review">Daily review</a></nav><div class="top-actions"><button class="pill" id="exportTop">Export CSV ↗</button><button class="pill primary" id="newTradeTop">+ Log trade</button></div></header>
 <main class="wrap">
